@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 import { ApiService, Repository } from '../api.service'; // Update 
 import { MatTableModule } from '@angular/material/table';
@@ -19,11 +20,14 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatLabel,
     MatTableModule,
+    MatPaginatorModule,
   ],
   templateUrl: './dynamic-table.component.html',
-  styleUrls: ['./dynamic-table.component.css'],
+  styleUrls: ['./dynamic-table.component.scss'],
 })
 export class DynamicTableComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   dataSource = new MatTableDataSource<any>(); // Dynamic data source
   displayedColumns: string[] = []; // Dynamic columns
   filterText: string = '';
@@ -39,6 +43,8 @@ export class DynamicTableComponent implements OnInit {
           // Dynamically generate columns based on the first item in the data
           this.displayedColumns = Object.keys(data.value[0]);
           this.dataSource.data = data.value; // Set the data source
+           // Enable pagination
+           this.dataSource.paginator = this.paginator;
         }
       },
       (error) => {
