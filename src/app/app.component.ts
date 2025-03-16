@@ -6,7 +6,7 @@ import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
   standalone: true,
   imports: [DynamicTableComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'ERA_INFO';

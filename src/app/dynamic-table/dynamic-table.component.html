@@ -7,7 +7,12 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Dynamic Columns -->
   <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-    <th mat-header-cell *matHeaderCellDef>{{ column === 'project' ? 'Project Name' : column }}</th>
+    <th mat-header-cell *matHeaderCellDef>  {{ 
+      column === 'projectName' ? 'Project Name' : 
+      column === 'lastUpdated' ? 'Last Updated' : 
+      column 
+    }}</th>
+    
     <td mat-cell *matCellDef="let repo">
       <!-- Handle nested objects (e.g., repo.project.name) -->
       <ng-container *ngIf="!isObject(repo[column]); else nestedObject">
