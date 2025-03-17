@@ -62,7 +62,7 @@ export class DynamicTableComponent implements OnInit {
   
           // Remove unwanted columns (e.g., 'sshUrl', 'webUrl', 'project')
           const filteredColumns = allColumns.filter(
-            column => column !== 'sshUrl' && column !== 'webUrl' && column !== 'project'
+            column => column !== 'sshUrl' && column !== 'webUrl' && column !== 'url' && column !== 'project'
           );
   
           // Add 'projectName' and 'lastUpdated' to the filtered columns
